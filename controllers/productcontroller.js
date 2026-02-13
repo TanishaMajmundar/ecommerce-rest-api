@@ -1,15 +1,12 @@
-// Fake in-memory data
 let products = [
   { id: 1, name: 'Laptop', price: 50000 },
   { id: 2, name: 'Phone', price: 20000 }
 ];
 
-// GET /products
 exports.getAllProducts = (req, res) => {
   res.json(products);
 };
 
-// GET /products/:id
 exports.getProductById = (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find(p => p.id === id);
@@ -21,7 +18,6 @@ exports.getProductById = (req, res) => {
   res.json(product);
 };
 
-// POST /products
 exports.createProduct = (req, res) => {
   const newProduct = {
     id: products.length + 1,
@@ -33,7 +29,6 @@ exports.createProduct = (req, res) => {
   res.status(201).json(newProduct);
 };
 
-// PUT /products/:id
 exports.updateProduct = (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find(p => p.id === id);
@@ -48,7 +43,6 @@ exports.updateProduct = (req, res) => {
   res.json(product);
 };
 
-// DELETE /products/:id
 exports.deleteProduct = (req, res) => {
   const id = parseInt(req.params.id);
   products = products.filter(p => p.id !== id);
