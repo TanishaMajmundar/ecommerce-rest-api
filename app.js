@@ -14,9 +14,14 @@ app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 
 app.use((err, req, res, next) => {
-    res.status(500).json({ message: "Server Error" });
+    console.error(err.stack);
+
+    res.status(500).json({
+        message: "Server Error",
+        error: err.message
+    });
 });
 
 app.listen(3000, () => {
-    console.log("Server running on port 3000");
+    console.log('Server running on port 3000');
 });
